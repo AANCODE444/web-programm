@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animasi Mengetik dan Hujan Teks</title>
+    <title>Animasi Mengetik dan Tombol</title>
     <style>
         /* Mengatur gambar latar belakang */
         body {
@@ -15,41 +15,39 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: Arial, sans-serif;
             color: #fff;
+            text-align: center;
+            flex-direction: column;
         }
 
-        /* Animasi mengetik di tengah layar */
+        /* Animasi mengetik */
         .typewriter h1 {
             font-size: 2.5em;
             color: #ff69b4;
-            border-right: 3px solid #fff;
+            border-right: 2px solid #fff;
             white-space: nowrap;
             overflow: hidden;
             width: 0;
-            animation: typing 3s steps(20) forwards, blink 0.5s step-end infinite alternate;
-            position: absolute;
-            top: 40%;
-            transform: translateY(-50%);
+            animation: typing 3s steps(30) forwards, blink 0.5s step-end infinite alternate;
         }
 
-        /* Efek hujan teks */
-        .rain {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        /* Tombol */
+        .button {
             display: none; /* Disembunyikan pada awalnya */
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            color: #fff;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        .rain span {
-            position: absolute;
-            font-size: 1.5em;
-            color: #ff69b4;
-            opacity: 0.8;
-            animation: fall 3s linear infinite;
+        .button:hover {
+            background-color: #ff1493;
         }
 
         /* Animasi */
@@ -61,35 +59,18 @@
         @keyframes blink {
             50% { border-color: transparent; }
         }
-
-        /* Efek jatuh untuk teks hujan */
-        @keyframes fall {
-            0% { transform: translateY(-100px); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
-        }
     </style>
 </head>
 <body>
     <div class="typewriter">
-        <h1>Hallo sayangku cintaku</h1>
+        <h1>Hallo sayang ku cintaku</h1>
     </div>
-    <div class="rain" id="rain"></div>
+    <button class="button" onclick="alert('Tetap semangat ya!')">semangat !!</button>
 
     <script>
-        // Menampilkan hujan teks setelah animasi mengetik selesai
+        // Tampilkan tombol setelah animasi mengetik selesai
         setTimeout(() => {
-            document.getElementById('rain').style.display = 'block';
-
-            // Membuat elemen teks "I Love U" secara acak
-            for (let i = 0; i < 100; i++) {
-                let span = document.createElement('span');
-                span.textContent = 'I Love U';
-                span.style.left = Math.random() * 100 + 'vw';
-                span.style.animationDuration = Math.random() * 2 + 3 + 's';
-                span.style.fontSize = Math.random() * 1 + 1 + 'em';
-                document.getElementById('rain').appendChild(span);
-            }
+            document.querySelector('.button').style.display = 'inline-block';
         }, 3000); // Waktu sesuai durasi animasi mengetik (3 detik)
     </script>
 </body>
