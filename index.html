@@ -3,10 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Sederhana</title>
+    <title>Animasi Mengetik</title>
+    <style>
+        /* Mengatur gambar latar belakang */
+        body {
+            background-image: url('link.jpg'); /* Ganti 'link.jpg' dengan URL gambar Anda */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Animasi mengetik */
+        .typewriter h1 {
+            font-size: 2em;
+            border-right: 2px solid #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 2s steps(10) forwards, blink 0.5s step-end infinite alternate;
+        }
+
+        /* Tombol */
+        .button {
+            display: none; /* Disembunyikan pada awalnya */
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Animasi */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Selamat Datang di Halaman Web Saya!</h1>
-    <p>Ini adalah halaman sederhana yang bisa diakses oleh siapa saja.</p>
+    <div class="typewriter">
+        <h1>Hallo sayangku cintaaa</h1>
+    </div>
+    <button class="button" onclick="alert('Tetap semangat!')">SEMANGAT!</button>
+
+    <script>
+        // Tampilkan tombol setelah animasi mengetik selesai
+        setTimeout(() => {
+            document.querySelector('.button').style.display = 'inline-block';
+        }, 2000); // Waktu sesuai durasi animasi mengetik (2 detik)
+    </script>
 </body>
 </html>
