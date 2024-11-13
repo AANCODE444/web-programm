@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesan Cinta dengan Musik</title>
+    <title>Pesan Romantis</title>
     <style>
         /* Mengatur gambar latar belakang */
         body {
             background-image: url('https://f.top4top.io/p_323987cjb0.jpg'); /* Ganti 'link.jpg' dengan URL gambar Anda */
             background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,38 +22,38 @@
             flex-direction: column;
         }
 
-        /* Setiap baris teks diatur tampil secara bertahap */
+        /* Animasi mengetik untuk setiap baris */
         .typewriter h1 {
-            font-size: 2.2em;
+            font-size: 1.5em;
             color: #FFFFFF; /* Warna teks putih */
         }
 
-        /* Efek animasi untuk setiap baris teks */
         .line {
-            display: block; /* Setiap baris teks ditampilkan satu per satu */
+            display: block; /* Menampilkan setiap baris secara terpisah */
             overflow: hidden;
             white-space: nowrap;
-            border-right: 2px solid #FFFFFF; /* Warna border putih untuk efek kedip */
+            border-right: 2px solid #FFFFFF; /* Efek kedip */
             animation: typing 2s steps(30) forwards, blink 0.5s step-end infinite alternate;
         }
 
-        /* Animasi mengetik */
+        /* Efek animasi mengetik */
         @keyframes typing {
             from { width: 0; }
             to { width: 100%; }
         }
 
-        /* Animasi kedip untuk efek border */
+        /* Efek kedip untuk batas teks */
         @keyframes blink {
             50% { border-color: transparent; }
         }
 
-        /* Mengatur delay animasi untuk setiap baris */
+        /* Delay animasi untuk setiap baris */
         .line:nth-child(1) { animation-delay: 0s; }
         .line:nth-child(2) { animation-delay: 2.5s; }
         .line:nth-child(3) { animation-delay: 5s; }
         .line:nth-child(4) { animation-delay: 7.5s; }
         .line:nth-child(5) { animation-delay: 10s; }
+        .line:nth-child(6) { animation-delay: 12.5s; }
 
         /* Tombol */
         .button {
@@ -71,6 +72,24 @@
         .button:hover {
             background-color: #ff1493;
         }
+
+        /* Efek romantis (salju jatuh) */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            font-size: 1.5em;
+            color: #fff;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -80,23 +99,46 @@
         Browser Anda tidak mendukung pemutar audio.
     </audio>
 
+    <!-- Teks animasi mengetik -->
     <div class="typewriter">
-        <!-- Memisahkan teks menjadi 5 baris dengan elemen <span> -->
         <h1>
             <span class="line">“Hai sayang,</span>
-            <span class="line">aku ingin kamu tahu bahwa setiap hari bersamamu</span>
-            <span class="line">adalah berkah yang selalu kunantikan.</span>
-            <span class="line">Kamu adalah alasan aku tersenyum,</span>
-            <span class="line">dan aku akan selalu ada untukmu, sampai kapanpun.”</span>
+            <span class="line">Terima kasih karena selalu ada di hidupku.</span>
+            <span class="line">Kamu adalah sumber kekuatanku,</span>
+            <span class="line">dan pelita yang menerangi jalanku.</span>
+            <span class="line">Setiap hari bersamamu adalah hadiah,</span>
+            <span class="line">dan aku mencintaimu lebih dari apapun.”</span>
         </h1>
     </div>
-    <button class="button" onclick="alert('Aku mencintaimu lebih dari yang bisa kukatakan!')">Untukmu, selamanya!</button>
 
+    <!-- Tombol yang muncul setelah animasi selesai -->
+    <button class="button" onclick="alert('Selalu bersama selamanya!')">Untukmu, Sayang!</button>
+
+    <!-- Salju jatuh sebagai efek romantis -->
     <script>
         // Tampilkan tombol setelah animasi mengetik selesai
         setTimeout(() => {
             document.querySelector('.button').style.display = 'inline-block';
-        }, 12500); // Waktu sesuai durasi total animasi (12.5 detik)
+        }, 15000); // Waktu sesuai durasi total animasi (15 detik)
+
+        // Fungsi untuk menambahkan efek salju jatuh
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            document.body.appendChild(snowflake);
+
+            // Hapus salju setelah jatuh
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        // Tambahkan efek salju setiap 300ms
+        setInterval(createSnowflake, 300);
     </script>
 </body>
 </html>
