@@ -21,24 +21,38 @@
             flex-direction: column;
         }
 
-        /* Animasi mengetik dengan warna teks putih */
+        /* Setiap baris teks diatur tampil secara bertahap */
         .typewriter h1 {
-            font-size: 1.2em;
+            font-size: 2.2em;
             color: #FFFFFF; /* Warna teks putih */
-            border-right: 2px solid #FFFFFF; /* Warna border putih untuk efek kedip */
-            white-space: nowrap;
-            overflow: hidden;
-            width: 0;
-            animation: typing 8s steps(60) forwards, blink 0.5s step-end infinite alternate;
         }
 
-        /* Animasi teks baris demi baris */
+        /* Efek animasi untuk setiap baris teks */
         .line {
             display: block; /* Setiap baris teks ditampilkan satu per satu */
             overflow: hidden;
             white-space: nowrap;
-            animation: typing 8s steps(60) forwards, blink 0.5s step-end infinite alternate;
+            border-right: 2px solid #FFFFFF; /* Warna border putih untuk efek kedip */
+            animation: typing 2s steps(30) forwards, blink 0.5s step-end infinite alternate;
         }
+
+        /* Animasi mengetik */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Animasi kedip untuk efek border */
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Mengatur delay animasi untuk setiap baris */
+        .line:nth-child(1) { animation-delay: 0s; }
+        .line:nth-child(2) { animation-delay: 2.5s; }
+        .line:nth-child(3) { animation-delay: 5s; }
+        .line:nth-child(4) { animation-delay: 7.5s; }
+        .line:nth-child(5) { animation-delay: 10s; }
 
         /* Tombol */
         .button {
@@ -56,16 +70,6 @@
 
         .button:hover {
             background-color: #ff1493;
-        }
-
-        /* Animasi */
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            50% { border-color: transparent; }
         }
     </style>
 </head>
@@ -86,13 +90,13 @@
             <span class="line">dan aku akan selalu ada untukmu, sampai kapanpun.”</span>
         </h1>
     </div>
-    <button class="button" onclick="alert('Aku mencintaimu lebih dari yang bisa kukatakan!')">Untukmu, di pencet ya!</button>
+    <button class="button" onclick="alert('Aku mencintaimu lebih dari yang bisa kukatakan!')">Untukmu, selamanya!</button>
 
     <script>
         // Tampilkan tombol setelah animasi mengetik selesai
         setTimeout(() => {
             document.querySelector('.button').style.display = 'inline-block';
-        }, 8000); // Waktu sesuai durasi animasi mengetik (8 detik)
+        }, 12500); // Waktu sesuai durasi total animasi (12.5 detik)
     </script>
 </body>
 </html>
