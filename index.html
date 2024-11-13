@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesan Cinta Vertikal</title>
+    <title>Pesan Cinta dengan Musik</title>
     <style>
         /* Mengatur gambar latar belakang */
         body {
-            background-image: url('https://f.top4top.io/p_323987cjb0.jpg'); /* Ganti 'link.jpg' dengan URL gambar Anda */
+            background-image: url('link.jpg'); /* Ganti 'link.jpg' dengan URL gambar Anda */
             background-size: cover;
             display: flex;
             justify-content: center;
@@ -21,30 +21,23 @@
             flex-direction: column;
         }
 
-        /* Animasi mengetik vertikal */
-        .typewriter {
-            display: inline-block;
-            font-size: 1.5em;
+        /* Animasi mengetik dengan warna teks putih */
+        .typewriter h1 {
+            font-size: 1.2em;
             color: #FFFFFF; /* Warna teks putih */
+            border-right: 2px solid #FFFFFF; /* Warna border putih untuk efek kedip */
             white-space: nowrap;
             overflow: hidden;
-            animation: typing 10s steps(60) forwards, moveDown 12s linear infinite;
+            width: 0;
+            animation: typing 8s steps(60) forwards, blink 0.5s step-end infinite alternate;
         }
 
-        /* Efek animasi mengetik */
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        /* Animasi pergerakan teks dari atas ke bawah */
-        @keyframes moveDown {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(100%);
-            }
+        /* Animasi teks baris demi baris */
+        .line {
+            display: block; /* Setiap baris teks ditampilkan satu per satu */
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 8s steps(60) forwards, blink 0.5s step-end infinite alternate;
         }
 
         /* Tombol */
@@ -64,27 +57,42 @@
         .button:hover {
             background-color: #ff1493;
         }
+
+        /* Animasi */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
     </style>
 </head>
 <body>
-    <!-- Pesan animasi mengetik vertikal -->
-    <div class="typewriter">
-        "Hai sayang, aku ingin kamu tahu bahwa<br>
-        setiap hari bersamamu adalah berkah yang selalu kunantikan.<br>
-        Kamu adalah alasan aku tersenyum, dan tak peduli<br>
-        seberapa berat hari-hariku, pikiranku selalu menemukan<br>
-        kedamaian saat memikirkanmu. Semangat terus, cinta.<br>
-        Aku akan selalu ada untukmu, sampai kapanpun."
-    </div>
+    <!-- Audio otomatis diputar -->
+    <audio autoplay loop>
+        <source src="link-lagu.mp3" type="audio/mpeg"> <!-- Ganti 'link-lagu.mp3' dengan URL atau nama file audio Anda -->
+        Browser Anda tidak mendukung pemutar audio.
+    </audio>
 
-    <!-- Tombol yang muncul setelah animasi -->
-    <button class="button" onclick="alert('Aku mencintaimu lebih dari yang bisa kukatakan!')">Untukmu, selamanya!</button>
+    <div class="typewriter">
+        <!-- Memisahkan teks menjadi 5 baris dengan elemen <span> -->
+        <h1>
+            <span class="line">“Hai sayang,</span>
+            <span class="line">aku ingin kamu tahu bahwa setiap hari bersamamu</span>
+            <span class="line">adalah berkah yang selalu kunantikan.</span>
+            <span class="line">Kamu adalah alasan aku tersenyum,</span>
+            <span class="line">dan aku akan selalu ada untukmu, sampai kapanpun.”</span>
+        </h1>
+    </div>
+    <button class="button" onclick="alert('Aku mencintaimu lebih dari yang bisa kukatakan!')">Untukmu, di pencet ya!</button>
 
     <script>
         // Tampilkan tombol setelah animasi mengetik selesai
         setTimeout(() => {
             document.querySelector('.button').style.display = 'inline-block';
-        }, 12000); // Waktu sesuai durasi animasi mengetik (12 detik)
+        }, 8000); // Waktu sesuai durasi animasi mengetik (8 detik)
     </script>
 </body>
 </html>
